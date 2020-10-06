@@ -1,5 +1,6 @@
 package com.jeremysim.adoptapet.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,8 +30,10 @@ public class PetType {
   @Column(name = "img_url", nullable = false)
   private String imgUrl;
   @OneToMany(mappedBy = "adoptablePetType")
+  @JsonIgnoreProperties("adoptablePetType")
   private Set<AdoptablePet> adoptablePets;
   @OneToMany(mappedBy = "surrenderedPetType")
+  @JsonIgnoreProperties("surrenderedPetType")
   private Set<PetSurrenderApplication> petSurrenderApplications;
 
 }

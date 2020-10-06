@@ -11,12 +11,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "pet_surrender_applications")
 @Getter
 @Setter
+@NoArgsConstructor
 public class PetSurrenderApplication {
   @Id
   @SequenceGenerator(name="pet_surrender_application_generator", sequenceName = "pet_surrender_applications_id_seq", allocationSize = 1)
@@ -43,4 +45,18 @@ public class PetSurrenderApplication {
   private Boolean vaccinationStatus;
   @Column(name = "application_status", nullable = false)
   private String applicationStatus;
+
+  public PetSurrenderApplication(String name, String phoneNumber, String email,
+      String petName, Integer petAge, PetType surrenderedPetType, String petImageUrl,
+      Boolean vaccinationStatus, String applicationStatus) {
+    this.name = name;
+    this.phoneNumber = phoneNumber;
+    this.email = email;
+    this.petName = petName;
+    this.petAge = petAge;
+    this.surrenderedPetType = surrenderedPetType;
+    this.petImageUrl = petImageUrl;
+    this.vaccinationStatus = vaccinationStatus;
+    this.applicationStatus = applicationStatus;
+  }
 }

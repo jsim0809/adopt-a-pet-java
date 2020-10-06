@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/pet_types")
 public class PetTypesAPIController {
 
   private PetTypeRepository petTypeRepo;
@@ -18,7 +18,7 @@ public class PetTypesAPIController {
     this.petTypeRepo = petTypeRepo;
   }
 
-  @GetMapping("/pet_types")
+  @GetMapping
   public Iterable<PetType> getAllPetTypes() {
     return petTypeRepo.findAll();
   }

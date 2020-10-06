@@ -1,11 +1,14 @@
 com\jeremysim\adoptapet\seeders\AdoptablePetSeeder.class
 com\jeremysim\adoptapet\models\AdoptablePet.class
 com\jeremysim\adoptapet\controllers\AdoptablePetsAPIController.class
+com\jeremysim\adoptapet\controllers\PetSurrenderApplicationFormsAPIController.class
 com\jeremysim\adoptapet\controllers\PetTypesAPIController.class
 com\jeremysim\adoptapet\models\AdoptionApplication.class
 com\jeremysim\adoptapet\models\PetType.class
 com\jeremysim\adoptapet\repositories\PetSurrenderApplicationRepository.class
 com\jeremysim\adoptapet\seeders\Seeder.class
+com\jeremysim\adoptapet\services\PetSurrenderApplicationFormService.class
+com\jeremysim\adoptapet\models\PetSurrenderApplicationForm.class
 com\jeremysim\adoptapet\AdoptAPetApplication.class
 com\jeremysim\adoptapet\seeders\AdoptionApplicationSeeder.class
 com\jeremysim\adoptapet\repositories\AdoptionApplicationRepository.class

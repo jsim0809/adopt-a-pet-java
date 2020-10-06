@@ -7,8 +7,8 @@ const NewPetForm = props => {
     email: "",
     petName: "",
     petAge: "",
-    petType: "default",
-    petImage: "",
+    surrenderedPetType: "default",
+    petImageUrl: "",
     vaccinationStatus: "default"
   })
 
@@ -29,9 +29,10 @@ const NewPetForm = props => {
       email: newPet.email,
       petName: newPet.petName,
       petAge: newPet.petAge,
-      petType: newPet.petType,
-      petImage: newPet.petImage,
-      vaccinationStatus: newPet.vaccinationStatus
+      surrenderedPetType: newPet.surrenderedPetType,
+      petImageUrl: newPet.petImageUrl,
+      vaccinationStatus: newPet.vaccinationStatus,
+      applicationStatus: "pending",
     }
 
     let isFilledOut = true;
@@ -65,44 +66,44 @@ const NewPetForm = props => {
       <div className="adoption-form-section">
         <form className="put-pet-up-for-adoption" onSubmit={handlePetSubmit}>
           <h2>Put a Pet Up for Adoption!</h2>
-          <label htmlFor="name">Your Name:
-            <input type="text" name="name" id="name" onChange={handlePetChange} value={newPet.name} />
+          <label>Your Name:
+            <input type="text" name="name" onChange={handlePetChange} value={newPet.name} />
           </label>
         
-          <label htmlFor="phoneNumber">Phone Number:
-            <input type="text" name="phoneNumber" id="phoneNumber" onChange={handlePetChange} value={newPet.phoneNumber} />
+          <label>Phone Number:
+            <input type="text" name="phoneNumber" onChange={handlePetChange} value={newPet.phoneNumber} />
           </label>
         
-          <label htmlFor="email">Email Address:
-            <input type="text" name="email" id="email" onChange={handlePetChange} value={newPet.email} />
+          <label>Email Address:
+            <input type="text" name="email" onChange={handlePetChange} value={newPet.email} />
           </label>
         
-          <label htmlFor="petName">Pet Name:
-            <input type="text" name="petName" id="petName" onChange={handlePetChange} value={newPet.petName} />
+          <label>Pet Name:
+            <input type="text" name="petName" onChange={handlePetChange} value={newPet.petName} />
           </label>
         
-          <label htmlFor="petAge">Pet Age:
-            <input type="text" name="petAge" id="petAge" onChange={handlePetChange} value={newPet.petAge} />
+          <label>Pet Age:
+            <input type="number" name="petAge" onChange={handlePetChange} value={newPet.petAge} />
           </label>
         
-          <label htmlFor="petType">Select Pet Type:</label>
-            <select name="petType" id="petType" onChange={handlePetChange} value={newPet.petType}>
+          <label>Select Pet Type:</label>
+            <select name="surrenderedPetType" onChange={handlePetChange} value={newPet.surrenderedPetType}>
               <option value="default" disabled hidden>--Select Pet Type--</option>
               <option value="2">Four-Legged</option>
               <option value="1">Two-Legged</option>
             </select>
         
-          <label htmlFor="image">Image Source:
-            <input type="text" name="petImage" id="petImage" onChange={handlePetChange} value={newPet.petImage} />
+          <label>Image Source:
+            <input type="text" name="petImageUrl" onChange={handlePetChange} value={newPet.petImageUrl} />
           </label>
         
-          <label htmlFor="vaccinationStatus">Is your pet vaccinated? </label>
-            <select name="vaccinationStatus" id="vaccinationStatus" onChange={handlePetChange} value={newPet.vaccinationStatus}>
+          <label>Is your pet vaccinated? </label>
+            <select name="vaccinationStatus" onChange={handlePetChange} value={newPet.vaccinationStatus}>
               <option value="default" disabled hidden>--Choose one of the following--</option>
               <option value="true">Yes</option>
               <option value="false">No</option>
           </select>
-        
+
           <div>
             <input className="button submit-btn" type="submit" value="Submit" />
           </div>
