@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PetTypeRepository extends CrudRepository<PetType, Integer> {
-  Optional<PetType> findByType(String type);
+  Optional<PetType> findByTypeIgnoreCase(String type);
 }
