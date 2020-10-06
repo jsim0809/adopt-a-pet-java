@@ -26,8 +26,8 @@ public class AdoptablePetsAPIController {
   }
 
   @GetMapping("/adoptable_pets")
-  public Iterable<AdoptablePet> getPetsByType(@RequestParam Integer type) {
-    PetType petType = petTypeRepo.findById(type).get();
+  public Iterable<AdoptablePet> getPetsByType(@RequestParam String type) {
+    PetType petType = petTypeRepo.findByTypeIgnoreCase(type).get();
     return adoptablePetRepo.findByAdoptablePetType(petType);
   }
 }

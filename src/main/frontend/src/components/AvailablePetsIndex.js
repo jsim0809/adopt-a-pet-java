@@ -27,9 +27,9 @@ const AvailablePetsIndex = props => {
   }, [species]);
 
   let speciesName = ""
-  if (species == 1) {
+  if (species === "two-legged") {
     speciesName = "Two Legged"
-  } else if (species == 2) {
+  } else if (species === "four-legged") {
     speciesName = "Four Legged"
   }
 

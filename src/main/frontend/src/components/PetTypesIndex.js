@@ -10,9 +10,9 @@ const PetTypesIndex = props => {
         setPetTypesDisplay(petTypes.map((petType) => {
           return (
             <div className="columns medium-5 home-pets" key={petType.id}>
-              <Link to={`/pets/${petType.id}`}><img className="pet-index-pictures" src={petType.imgUrl} /></Link>
+              <Link to={`/pets/${petType.type.toLowerCase()}`}><img className="pet-index-pictures" src={petType.imgUrl} /></Link>
               <div>
-                <Link to={`/pets/${petType.id}`}>{petType.type}</Link>
+                <Link to={`/pets/${petType.type.toLowerCase()}`}>{petType.type}</Link>
                 <p>{petType.description}</p>
               </div>
             </div>

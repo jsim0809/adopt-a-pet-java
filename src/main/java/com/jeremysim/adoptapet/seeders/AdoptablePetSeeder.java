@@ -21,8 +21,8 @@ public class AdoptablePetSeeder {
 
   public void seed() {
     if(!adoptablePetRepo.findAll().iterator().hasNext()) {
-      PetType twoLegged = petTypeRepo.findByType("Two-legged").get();
-      PetType fourLegged = petTypeRepo.findByType("Four-legged").get();
+      PetType twoLegged = petTypeRepo.findByTypeIgnoreCase("Two-legged").get();
+      PetType fourLegged = petTypeRepo.findByTypeIgnoreCase("Four-legged").get();
 
       AdoptablePet clifford = new AdoptablePet();
       clifford.setName("Clifford");
