@@ -117,7 +117,7 @@ app.post("/api/v1/adoption_surrender_approval", (req, res) => {
   const { id, applicationStatus } = req.body
   const queryString1 = `UPDATE pet_surrender_applications SET application_status = '${applicationStatus}' where id = '${id}' RETURNING *`
   const queryString2 = "INSERT INTO adoptable_pets (name, img_url, age, vaccination_status, adoption_story, adoption_status, type_id) VALUES ($1, $2, $3, $4, $5, $6, $7) "
- 
+
   pool.query(queryString1).then(result => {
     const surrenderedPet = result.rows[0]
     const adoptionStory = "Please adopt me, I need a home!"
@@ -162,4 +162,4 @@ app.listen(3000, "0.0.0.0", () => {
   console.log("Server is listening on port 3000...")
 })
 
-export default app 
+export default app
