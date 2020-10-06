@@ -12,7 +12,6 @@
     "test": "./node_modules/.bin/jest"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "path": "^0.12.7",
@@ -25,8 +24,6 @@
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
-    "debug": "~2.6.9",
-    "dotenv": "^8.2.0",
     "nodemon": "^2.0.4",
     "webpack-dev-server": "~2.4.2"
   }

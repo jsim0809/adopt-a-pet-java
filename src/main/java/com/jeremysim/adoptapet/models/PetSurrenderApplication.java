@@ -29,7 +29,9 @@ public class PetSurrenderApplication {
   private String phoneNumber;
   @Column(nullable = false)
   private String email;
-  @Column(name = "pet_age", nullable = false)
+  @Column(name = "pet_name", nullable = false)
+  private Integer petName;
+  @Column(name = "pet_age")
   private Integer petAge;
   @ManyToOne
   @JoinColumn(name = "pet_type_id", nullable = false)

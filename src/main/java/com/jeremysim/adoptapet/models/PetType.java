@@ -26,8 +26,8 @@ public class PetType {
   private String type;
   @Column
   private String description;
-  @Column(name = "img_url_random_animal", nullable = false)
-  private String imgUrlRandomAnimal;
+  @Column(name = "img_url", nullable = false)
+  private String imgUrl;
   @OneToMany(mappedBy = "adoptablePetType")
   private Set<AdoptablePet> adoptablePets;
   @OneToMany(mappedBy = "surrenderedPetType")
