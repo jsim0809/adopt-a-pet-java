@@ -13,3 +13,4 @@ com\jeremysim\adoptapet\repositories\PetTypeRepository.class
 com\jeremysim\adoptapet\seeders\PetTypeSeeder.class
 com\jeremysim\adoptapet\repositories\AdoptablePetRepository.class
 com\jeremysim\adoptapet\models\PetSurrenderApplication.class
+com\jeremysim\adoptapet\configurations\ReactConfiguration.class

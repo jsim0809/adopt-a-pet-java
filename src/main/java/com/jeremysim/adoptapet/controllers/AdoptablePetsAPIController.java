@@ -4,7 +4,6 @@ import com.jeremysim.adoptapet.models.AdoptablePet;
 import com.jeremysim.adoptapet.models.PetType;
 import com.jeremysim.adoptapet.repositories.AdoptablePetRepository;
 import com.jeremysim.adoptapet.repositories.PetTypeRepository;
-import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
