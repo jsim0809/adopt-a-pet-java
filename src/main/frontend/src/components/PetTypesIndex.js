@@ -7,10 +7,10 @@ const PetTypesIndex = props => {
     fetch('/api/v1/pet_types')
       .then((response) => response.json())
       .then((petTypes) => {
-        setPetTypesDisplay(petTypes.rows.map((petType) => {
+        setPetTypesDisplay(petTypes.map((petType) => {
           return (
             <div className="columns medium-5 home-pets" key={petType.id}>
-              <Link to={`/pets/${petType.id}`}><img className="pet-index-pictures" src={petType.img_url_random_animal} /></Link>
+              <Link to={`/pets/${petType.id}`}><img className="pet-index-pictures" src={petType.imgUrl} /></Link>
               <div>
                 <Link to={`/pets/${petType.id}`}>{petType.type}</Link>
                 <p>{petType.description}</p>

@@ -5,7 +5,9 @@ import com.jeremysim.adoptapet.models.AdoptionApplication;
 import com.jeremysim.adoptapet.repositories.AdoptablePetRepository;
 import com.jeremysim.adoptapet.repositories.AdoptionApplicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AdoptionApplicationSeeder {
   private AdoptablePetRepository adoptablePetRepo;
   private AdoptionApplicationRepository adoptionApplicationRepo;

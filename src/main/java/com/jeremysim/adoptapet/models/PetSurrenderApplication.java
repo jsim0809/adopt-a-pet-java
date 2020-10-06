@@ -30,7 +30,7 @@ public class PetSurrenderApplication {
   @Column(nullable = false)
   private String email;
   @Column(name = "pet_name", nullable = false)
-  private Integer petName;
+  private String petName;
   @Column(name = "pet_age")
   private Integer petAge;
   @ManyToOne
