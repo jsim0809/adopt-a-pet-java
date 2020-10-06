@@ -82,11 +82,11 @@ const NewPetForm = props => {
           </label>
         
           <label htmlFor="petAge">Pet Age:
-            <input type="text" name="petAge" id="petAge" onChange={handlePetChange} value={newPet.petAge} />
+            <input type="number" name="petAge" id="petAge" onChange={handlePetChange} value={newPet.petAge} />
           </label>
         
           <label htmlFor="petType">Select Pet Type:</label>
-            <select name="petType" id="petType" onChange={handlePetChange} value={newPet.petType}>
+            <select name="surrenderedPetType" id="petType" onChange={handlePetChange} value={newPet.petType}>
               <option value="default" disabled hidden>--Select Pet Type--</option>
               <option value="2">Four-Legged</option>
               <option value="1">Two-Legged</option>
