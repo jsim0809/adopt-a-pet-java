@@ -9,15 +9,15 @@ const AvailablePetsIndex = props => {
     fetch(`/api/v1/adoptable_pets?type=${species}`)
       .then((response) => response.json())
       .then((availablePets) => {
-        setAvailablePetsDisplay(availablePets.rows.map((pet) => {
-          if (pet.adoption_status == "null" || pet.adoption_status == "denied") {
+        setAvailablePetsDisplay(availablePets.map((pet) => {
+          if (pet.adoptionStatus == "null" || pet.adoptionStatus == "denied") {
             return (
               <div className="columns small-3 display-pets" key={pet.id}>
-                <img src={pet.img_url} alt={`Photo of ${pet.name}`} />
+                <img src={pet.imgUrl} alt={`Photo of ${pet.name}`} />
                 <div>
                   <Link to={`/pets/${species}/${pet.id}`}>Name: {pet.name}</Link>
                   <p>Age: {pet.age}</p>
-                  <p>Vaccination Status: {pet.vaccination_status ? 'Yes' : 'No'}</p>
+                  <p>Vaccination Status: {pet.vaccinationStatus ? 'Yes' : 'No'}</p>
                 </div>
               </div>
             )
@@ -36,8 +36,8 @@ const AvailablePetsIndex = props => {
   return (
     <>
       <h1>{speciesName}</h1>
-      <div class="grid-container">
-        <div class="grid-x">
+      <div className="grid-container">
+        <div className="grid-x">
           {availablePetsDisplay}
         </div>
       </div>
