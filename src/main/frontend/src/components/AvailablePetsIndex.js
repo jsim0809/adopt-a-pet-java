@@ -13,7 +13,9 @@ const AvailablePetsIndex = props => {
           if (pet.adoptionStatus == "null" || pet.adoptionStatus == "denied") {
             return (
               <div className="columns small-3 display-pets" key={pet.id}>
-                <img src={pet.imgUrl} alt={`Photo of ${pet.name}`} />
+                <Link to={`/pets/${species}/${pet.id}`}>
+                  <img src={pet.imgUrl} alt={`Photo of ${pet.name}`} />
+                </Link>
                 <div>
                   <Link to={`/pets/${species}/${pet.id}`}>Name: {pet.name}</Link>
                   <p>Age: {pet.age}</p>
