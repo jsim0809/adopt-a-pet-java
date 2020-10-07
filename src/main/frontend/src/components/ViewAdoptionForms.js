@@ -61,7 +61,7 @@ const ApprovalForm = props => {
 
     return (
         <form className="put-pet-up-for-adoption adoption-form-section" onSubmit={handleApprovalSubmit} >
-            <label htmlFor="completedForms">Select a form to review:</label>
+            <label htmlFor="completedForms">Select an adoption request form to review:</label>
             <select onChange={handleSelectionChange} name="completedForms" id="completedForms">
                 <option value="null">--Please choose an option--</option>
                 {allForms}

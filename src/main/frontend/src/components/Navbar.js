@@ -40,6 +40,24 @@ const Navbar = props => {
                 </Link>
             </li>
 
+              <li>
+                <Link to="/pets/adopted">
+                  <div className="navbar">Success Stories </div>
+                </Link>
+            </li>
+
+              <li>
+                <Link to="/admin/review/adoption">
+                  <div className="navbar">Review Adoption Requests </div>
+                </Link>
+            </li>
+
+              <li>
+                <Link to="/admin/review/surrender">
+                  <div className="navbar">Review Pet Surrender Requests </div>
+                </Link>
+            </li>
+
           </ul>
         </div>
       </div>

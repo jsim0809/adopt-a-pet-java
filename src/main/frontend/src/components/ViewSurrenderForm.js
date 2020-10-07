@@ -66,7 +66,7 @@ const SurrenderForm = props => {
 
     return (
         <form className="put-pet-up-for-adoption adoption-form-section" onSubmit={handleSurrenderSubmit} >
-            <label htmlFor="finishedForms">Select a form to review:</label>
+            <label htmlFor="finishedForms">Select a pet surrender form to review:</label>
             <select onChange={handleSelectedChange} name="finishedForms" id="finishedForms">
                 <option value="null">--Please choose an option--</option>
                 {viewAllForms}
