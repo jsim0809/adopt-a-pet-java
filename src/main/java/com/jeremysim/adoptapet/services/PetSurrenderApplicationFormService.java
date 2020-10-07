@@ -32,7 +32,7 @@ public class PetSurrenderApplicationFormService {
         type,
         form.getPetImageUrl(),
         form.getVaccinationStatus(),
-        form.getApplicationStatus());
+        "pending");
   }
 
 }

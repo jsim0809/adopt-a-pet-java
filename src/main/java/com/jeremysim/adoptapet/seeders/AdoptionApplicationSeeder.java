@@ -31,6 +31,7 @@ public class AdoptionApplicationSeeder {
       grandmaApp.setHomeStatus("own");
       grandmaApp.setApplicationStatus("pending");
       grandmaApp.setPet(tweety);
+      adoptionApplicationRepo.save(grandmaApp);
     }
   }
 }

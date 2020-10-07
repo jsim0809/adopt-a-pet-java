@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 @Setter
-public class PetSurrenderApplicationForm {
+public class AdoptionApplicationForm {
   @NotBlank
   private String name;
   @NotBlank
@@ -17,13 +17,7 @@ public class PetSurrenderApplicationForm {
   @NotBlank
   private String email;
   @NotBlank
-  private String petName;
-
-  private Integer petAge;
+  private String homeStatus;
   @NotNull
-  private Integer surrenderedPetType;
-  @NotBlank
-  private String petImageUrl;
-
-  private Boolean vaccinationStatus;
+  private Integer petId;
 }
