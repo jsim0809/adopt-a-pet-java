@@ -26,6 +26,9 @@ const SurrenderForm = props => {
                 approvalStatus: newSurrender
             })
         })
+          .then(() => {
+            window.location.reload(true);
+          })
     };
 
     useEffect(() => {
