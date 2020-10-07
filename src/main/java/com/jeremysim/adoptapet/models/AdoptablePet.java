@@ -13,12 +13,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "adoptable_pets")
 @Getter
 @Setter
+@NoArgsConstructor
 public class AdoptablePet {
   @Id
   @SequenceGenerator(name="adoptable_pet_generator", sequenceName = "adoptable_pets_id_seq", allocationSize = 1)
@@ -44,4 +46,15 @@ public class AdoptablePet {
   @OneToMany(mappedBy = "pet")
   private Set<AdoptionApplication> adoptionApplications;
 
+  public AdoptablePet(String name, String imgUrl, Integer age, Boolean vaccinationStatus,
+      String adoptionStory, String adoptionStatus,
+      PetType adoptablePetType) {
+    this.name = name;
+    this.imgUrl = imgUrl;
+    this.age = age;
+    this.vaccinationStatus = vaccinationStatus;
+    this.adoptionStory = adoptionStory;
+    this.adoptionStatus = adoptionStatus;
+    this.adoptablePetType = adoptablePetType;
+  }
 }

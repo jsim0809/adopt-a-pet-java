@@ -29,6 +29,11 @@ public class AdoptablePetsAPIController {
   }
 
   @GetMapping
+  public Iterable<AdoptablePet> getAllPets() {
+    return adoptablePetRepo.findAll();
+  }
+
+  @GetMapping("/by_type")
   public Iterable<AdoptablePet> getPetsByType(@RequestParam String type) {
     PetType petType = petTypeRepo.findByTypeIgnoreCase(type).get();
     return adoptablePetRepo.findByAdoptablePetType(petType);

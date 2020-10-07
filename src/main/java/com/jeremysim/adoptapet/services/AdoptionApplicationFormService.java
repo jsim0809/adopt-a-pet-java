@@ -3,12 +3,7 @@ package com.jeremysim.adoptapet.services;
 import com.jeremysim.adoptapet.models.AdoptablePet;
 import com.jeremysim.adoptapet.models.AdoptionApplication;
 import com.jeremysim.adoptapet.models.AdoptionApplicationForm;
-import com.jeremysim.adoptapet.models.PetSurrenderApplication;
-import com.jeremysim.adoptapet.models.PetSurrenderApplicationForm;
-import com.jeremysim.adoptapet.models.PetType;
 import com.jeremysim.adoptapet.repositories.AdoptablePetRepository;
-import com.jeremysim.adoptapet.repositories.PetSurrenderApplicationRepository;
-import com.jeremysim.adoptapet.repositories.PetTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,5 +27,4 @@ public class AdoptionApplicationFormService {
         "pending",
         pet);
   }
-
 }

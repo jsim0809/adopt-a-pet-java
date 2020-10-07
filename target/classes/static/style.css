@@ -165,6 +165,7 @@ div.individual-pet-information {
 .form-display li {
   list-style-type: none;
   border: none;
+  display: block;
 }
 
 .form-display li:hover {
