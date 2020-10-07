@@ -22,8 +22,8 @@ const SurrenderForm = props => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                id: currentlySelectedApp.id,
-                applicationStatus: currentlySelectedApp.newSurrender
+                applicationId: currentlySelectedApp.id,
+                approvalStatus: newSurrender
             })
         })
     };

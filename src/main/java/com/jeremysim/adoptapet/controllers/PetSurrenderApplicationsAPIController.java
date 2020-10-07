@@ -1,9 +1,12 @@
 package com.jeremysim.adoptapet.controllers;
 
 import com.jeremysim.adoptapet.models.AdoptionApplication;
+import com.jeremysim.adoptapet.models.AdoptionApplicationApprovalForm;
 import com.jeremysim.adoptapet.models.PetSurrenderApplication;
+import com.jeremysim.adoptapet.models.PetSurrenderApplicationApprovalForm;
 import com.jeremysim.adoptapet.models.PetSurrenderApplicationForm;
 import com.jeremysim.adoptapet.repositories.PetSurrenderApplicationRepository;
+import com.jeremysim.adoptapet.services.PetSurrenderApplicationApprovalFormService;
 import com.jeremysim.adoptapet.services.PetSurrenderApplicationFormService;
 import java.util.List;
 import javax.validation.Valid;
@@ -23,13 +26,16 @@ public class PetSurrenderApplicationsAPIController {
 
   private PetSurrenderApplicationRepository petSurrenderApplicationRepo;
   private PetSurrenderApplicationFormService petSurrenderApplicationFormService;
+  private PetSurrenderApplicationApprovalFormService petSurrenderApplicationApprovalFormService;
 
   @Autowired
   public PetSurrenderApplicationsAPIController(
       PetSurrenderApplicationRepository petSurrenderApplicationRepo,
-      PetSurrenderApplicationFormService petSurrenderApplicationFormService) {
+      PetSurrenderApplicationFormService petSurrenderApplicationFormService,
+      PetSurrenderApplicationApprovalFormService petSurrenderApplicationApprovalFormService) {
     this.petSurrenderApplicationRepo = petSurrenderApplicationRepo;
     this.petSurrenderApplicationFormService = petSurrenderApplicationFormService;
+    this.petSurrenderApplicationApprovalFormService = petSurrenderApplicationApprovalFormService;
   }
 
   @PostMapping
@@ -50,4 +56,15 @@ public class PetSurrenderApplicationsAPIController {
     return petSurrenderApplicationRepo.findAll();
   }
 
+  @PostMapping("/approve")
+  public ResponseEntity approveApplication(@Valid @RequestBody PetSurrenderApplicationApprovalForm form,
+      BindingResult binding) {
+    if(binding.hasErrors()) {
+      return new ResponseEntity<List>(binding.getAllErrors(), HttpStatus.NOT_ACCEPTABLE);
+    }
+    else {
+      petSurrenderApplicationApprovalFormService.process(form);
+      return new ResponseEntity<AdoptionApplication>(HttpStatus.OK);
+    }
+  }
 }
