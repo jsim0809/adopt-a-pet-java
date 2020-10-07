@@ -16,7 +16,7 @@ const SurrenderForm = props => {
 
     const handleSurrenderSubmit = event => {
         event.preventDefault()
-        fetch("/api/v1/adoption_surrender_approval", {
+        fetch("/api/v1/pet_surrender_applications/approve", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -29,9 +29,9 @@ const SurrenderForm = props => {
     };
 
     useEffect(() => {
-        fetch("/api/v1/surrender_application").then((response) => response.json())
+        fetch("/api/v1/pet_surrender_applications").then((response) => response.json())
             .then(surrenderForms => {
-                setAllSurrenderForms(surrenderForms.rows)
+                setAllSurrenderForms(surrenderForms)
             })
     }
         , [])
@@ -39,7 +39,7 @@ const SurrenderForm = props => {
     let viewAllForms = allSurrenderForms.map(SurrenderForm => {
         return (
             <option key={SurrenderForm.id} value={JSON.stringify(SurrenderForm)}>
-                --{`${SurrenderForm.name}, Surrender Application #${SurrenderForm.id}, ${SurrenderForm.application_status}`}--
+                --{`${SurrenderForm.name}, Surrender Application #${SurrenderForm.id}, ${SurrenderForm.applicationStatus}`}--
             </option>
         )
     })
@@ -49,14 +49,14 @@ const SurrenderForm = props => {
         viewFormDisplay = (<div>
             <ul className="form-display">
                 <li>{`Applicant Name:${currentlySelectedApp.name}`}</li>
-                <li>{`Phone#: ${currentlySelectedApp.phone_number}`}</li>
+                <li>{`Phone#: ${currentlySelectedApp.phoneNumber}`}</li>
                 <li>{`Email: ${currentlySelectedApp.email}`}</li>
-                <li>{`Pet Name# ${currentlySelectedApp.pet_name}`}</li>
-                <li>{`Pet Age# ${currentlySelectedApp.pet_age}`}</li>
-                <li>{`Pet Type: ${currentlySelectedApp.pet_type}`}</li>
-                <li>{`Pet Image: ${currentlySelectedApp.pet_image_url}`}</li>
-                <li>{`Is pet Vaccinated: ${currentlySelectedApp.vaccination_status}`}</li>
-                <li>{`Application Status: ${currentlySelectedApp.application_status}`}</li>
+                <li>{`Pet Name# ${currentlySelectedApp.petName}`}</li>
+                <li>{`Pet Age# ${currentlySelectedApp.petAge}`}</li>
+                <li>{`Pet Type: ${currentlySelectedApp.surrenderedPetType.type}`}</li>
+                <li>{`Pet Image: ${currentlySelectedApp.petImageUrl}`}</li>
+                <li>{`Is pet Vaccinated: ${currentlySelectedApp.vaccinationStatus}`}</li>
+                <li>{`Application Status: ${currentlySelectedApp.applicationStatus}`}</li>
             </ul>
         </div>)
     }

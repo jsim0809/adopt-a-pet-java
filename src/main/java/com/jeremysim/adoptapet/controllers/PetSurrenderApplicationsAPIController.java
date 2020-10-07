@@ -1,5 +1,6 @@
 package com.jeremysim.adoptapet.controllers;
 
+import com.jeremysim.adoptapet.models.AdoptionApplication;
 import com.jeremysim.adoptapet.models.PetSurrenderApplication;
 import com.jeremysim.adoptapet.models.PetSurrenderApplicationForm;
 import com.jeremysim.adoptapet.repositories.PetSurrenderApplicationRepository;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +43,11 @@ public class PetSurrenderApplicationsAPIController {
           petSurrenderApplicationRepo.save(petSurrenderApplicationFormService.toApplication(form)),
           HttpStatus.CREATED);
     }
+  }
+
+  @GetMapping
+  public Iterable<PetSurrenderApplication> getAll() {
+    return petSurrenderApplicationRepo.findAll();
   }
 
 }
