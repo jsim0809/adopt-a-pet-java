@@ -15,8 +15,10 @@ com\jeremysim\adoptapet\models\PetSurrenderApplication.class
 com\jeremysim\adoptapet\models\AdoptablePet.class
 com\jeremysim\adoptapet\controllers\PetTypesAPIController.class
 com\jeremysim\adoptapet\models\AdoptionApplication.class
+com\jeremysim\adoptapet\models\AdoptionApplicationApprovalForm.class
 com\jeremysim\adoptapet\controllers\PetSurrenderApplicationsAPIController.class
 com\jeremysim\adoptapet\models\PetType.class
 com\jeremysim\adoptapet\services\AdoptionApplicationFormService.class
+com\jeremysim\adoptapet\services\AdoptionApplicationApprovalFormService.class
 com\jeremysim\adoptapet\repositories\PetTypeRepository.class
 com\jeremysim\adoptapet\configurations\ReactConfiguration.class

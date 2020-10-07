@@ -1,8 +1,10 @@
 package com.jeremysim.adoptapet.controllers;
 
 import com.jeremysim.adoptapet.models.AdoptionApplication;
+import com.jeremysim.adoptapet.models.AdoptionApplicationApprovalForm;
 import com.jeremysim.adoptapet.models.AdoptionApplicationForm;
 import com.jeremysim.adoptapet.repositories.AdoptionApplicationRepository;
+import com.jeremysim.adoptapet.services.AdoptionApplicationApprovalFormService;
 import com.jeremysim.adoptapet.services.AdoptionApplicationFormService;
 import java.util.List;
 import javax.validation.Valid;
@@ -22,13 +24,16 @@ public class AdoptionApplicationsAPIController {
 
   private AdoptionApplicationRepository adoptionApplicationRepo;
   private AdoptionApplicationFormService adoptionApplicationFormService;
+  private AdoptionApplicationApprovalFormService adoptionApplicationApprovalFormService;
 
   @Autowired
   public AdoptionApplicationsAPIController(
       AdoptionApplicationRepository adoptionApplicationRepo,
-      AdoptionApplicationFormService adoptionApplicationFormService) {
+      AdoptionApplicationFormService adoptionApplicationFormService,
+      AdoptionApplicationApprovalFormService adoptionApplicationApprovalFormService) {
     this.adoptionApplicationRepo = adoptionApplicationRepo;
     this.adoptionApplicationFormService = adoptionApplicationFormService;
+    this.adoptionApplicationApprovalFormService = adoptionApplicationApprovalFormService;
   }
 
   @PostMapping
@@ -49,4 +54,15 @@ public class AdoptionApplicationsAPIController {
     return adoptionApplicationRepo.findAll();
   }
 
+  @PostMapping("/approve")
+  public ResponseEntity approveApplication(@Valid @RequestBody AdoptionApplicationApprovalForm form,
+      BindingResult binding) {
+    if(binding.hasErrors()) {
+      return new ResponseEntity<List>(binding.getAllErrors(), HttpStatus.NOT_ACCEPTABLE);
+    }
+    else {
+      adoptionApplicationApprovalFormService.process(form);
+      return new ResponseEntity<AdoptionApplication>(HttpStatus.OK);
+    }
+  }
 }

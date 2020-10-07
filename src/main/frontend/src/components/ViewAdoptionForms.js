@@ -22,11 +22,14 @@ const ApprovalForm = props => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                petId:currentlySelectedForm.pet_id,
+                petId:currentlySelectedForm.pet.id,
                 applicationId:currentlySelectedForm.id,
                 approvalStatus:newApproval
             })
         })
+          .then(() => {
+            window.location.reload(true);
+          })
     };
 
     useEffect(() => {
@@ -58,7 +61,7 @@ const ApprovalForm = props => {
 
     return (
         <form className="put-pet-up-for-adoption adoption-form-section" onSubmit={handleApprovalSubmit} >
-            <label htmlFor="completedForms">Select a form to reveiw:</label>
+            <label htmlFor="completedForms">Select a form to review:</label>
             <select onChange={handleSelectionChange} name="completedForms" id="completedForms">
                 <option value="null">--Please choose an option--</option>
                 {allForms}
