@@ -11,12 +11,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "adoption_applications")
 @Getter
 @Setter
+@NoArgsConstructor
 public class AdoptionApplication {
   @Id
   @SequenceGenerator(name="adoption_application_generator", sequenceName = "adoption_applications_id_seq", allocationSize = 1)
@@ -37,4 +39,14 @@ public class AdoptionApplication {
   @JoinColumn(name = "pet_id", nullable = false)
   @JsonIgnoreProperties("adoptionApplications")
   private AdoptablePet pet;
+
+  public AdoptionApplication(String name, String phoneNumber, String email,
+      String homeStatus, String applicationStatus, AdoptablePet pet) {
+    this.name = name;
+    this.phoneNumber = phoneNumber;
+    this.email = email;
+    this.homeStatus = homeStatus;
+    this.applicationStatus = applicationStatus;
+    this.pet = pet;
+  }
 }

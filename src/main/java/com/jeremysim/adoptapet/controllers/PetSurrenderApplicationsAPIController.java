@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/pet_surrender_applications")
-public class PetSurrenderApplicationFormsAPIController {
+public class PetSurrenderApplicationsAPIController {
 
   private PetSurrenderApplicationRepository petSurrenderApplicationRepo;
   private PetSurrenderApplicationFormService petSurrenderApplicationFormService;
 
   @Autowired
-  public PetSurrenderApplicationFormsAPIController(
+  public PetSurrenderApplicationsAPIController(
       PetSurrenderApplicationRepository petSurrenderApplicationRepo,
       PetSurrenderApplicationFormService petSurrenderApplicationFormService) {
     this.petSurrenderApplicationRepo = petSurrenderApplicationRepo;

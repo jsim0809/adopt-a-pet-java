@@ -32,7 +32,6 @@ const NewPetForm = props => {
       surrenderedPetType: newPet.surrenderedPetType,
       petImageUrl: newPet.petImageUrl,
       vaccinationStatus: newPet.vaccinationStatus,
-      applicationStatus: "pending",
     }
 
     let isFilledOut = true;

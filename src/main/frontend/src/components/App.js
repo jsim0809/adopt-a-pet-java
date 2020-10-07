@@ -5,7 +5,7 @@ import Navbar from "./Navbar"
 const App = props => {
   return (
     <BrowserRouter>
-      <Route path={["/pets","/adoptions"]} component={Navbar} />
+      <Route path={["/pets","/adoptions", "/pending_applications", "/admin"]} component={Navbar} />
       <Route exact path="/">
         <Redirect to="/pets" />
       </Route>
