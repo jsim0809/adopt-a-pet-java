@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import AdoptionUpdateForm from './AdoptionUpdateForm';
+import NewPetUpdateForm from './NewPetUpdateForm';
 
 const PendingApplications = props => {
   const [adoptionApps, setAdoptionApps] = useState([]);
   const [surrenderApps, setSurrenderApps] = useState([]);
+  const [adoptionEditForm, setAdoptionEditForm] = useState(null);
+  const [surrenderEditForm, setSurrenderEditForm] = useState(null);
 
   const deleteAdoptionApp = (index) => {
     if (confirm("Delete this application?")) {
@@ -32,7 +36,7 @@ const PendingApplications = props => {
                   <td>{app.phoneNumber}</td>
                   <td>{app.email}</td>
                   <td onClick={() => deleteAdoptionApp(app.id)}><strong>🗙</strong></td>
-                  <td><strong>Edit</strong></td>
+                  <td onClick={() => setAdoptionEditForm(<AdoptionUpdateForm prefilled={app} />)}><strong>Edit</strong></td>
                 </tr>
               )
             }
@@ -55,7 +59,7 @@ const PendingApplications = props => {
                                              <td>{app.phoneNumber}</td>
                                              <td>{app.email}</td>
                                              <td onClick={() => deleteSurrenderApp(app.id)}><strong>🗙</strong></td>
-                                             <td><strong>Edit</strong></td>
+                                             <td onClick={() => setSurrenderEditForm(<NewPetUpdateForm prefilled={app} />)}><strong>Edit</strong></td>
                                            </tr>
                                          )
                                        }
@@ -64,6 +68,7 @@ const PendingApplications = props => {
                                };
 
     useEffect(fetchSurrenderApps, []);
+
 
   return (
     <>
@@ -83,8 +88,10 @@ const PendingApplications = props => {
         <tbody>
           {adoptionApps}
         </tbody>
-
       </table>
+
+      {adoptionEditForm}
+
         <h2>Pet Surrender Applications</h2>
             <table>
               <thead>
@@ -101,6 +108,8 @@ const PendingApplications = props => {
                 {surrenderApps}
               </tbody>
             </table>
+
+      {surrenderEditForm}
 
     </>
   );

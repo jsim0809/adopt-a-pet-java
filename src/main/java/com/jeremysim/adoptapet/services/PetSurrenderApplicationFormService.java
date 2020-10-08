@@ -1,5 +1,7 @@
 package com.jeremysim.adoptapet.services;
 
+import com.jeremysim.adoptapet.models.AdoptionApplication;
+import com.jeremysim.adoptapet.models.AdoptionApplicationForm;
 import com.jeremysim.adoptapet.models.PetSurrenderApplication;
 import com.jeremysim.adoptapet.models.PetSurrenderApplicationForm;
 import com.jeremysim.adoptapet.models.PetType;
@@ -33,6 +35,20 @@ public class PetSurrenderApplicationFormService {
         form.getPetImageUrl(),
         form.getVaccinationStatus(),
         "pending");
+  }
+
+  public void update(Integer formId, PetSurrenderApplicationForm form) {
+    PetSurrenderApplication currentApp = petSurrenderApplicationRepo.findById(formId).get();
+    PetSurrenderApplication newApp = toApplication(form);
+    currentApp.setName(newApp.getName());
+    currentApp.setPhoneNumber(newApp.getPhoneNumber());
+    currentApp.setEmail(newApp.getEmail());
+    currentApp.setPetName(newApp.getPetName());
+    currentApp.setPetAge(newApp.getPetAge());
+    currentApp.setSurrenderedPetType(newApp.getSurrenderedPetType());
+    currentApp.setPetImageUrl(newApp.getPetImageUrl());
+    currentApp.setVaccinationStatus(newApp.getVaccinationStatus());
+    petSurrenderApplicationRepo.save(currentApp);
   }
 
 }
