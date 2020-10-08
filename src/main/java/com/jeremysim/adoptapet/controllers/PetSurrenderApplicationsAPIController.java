@@ -1,8 +1,6 @@
 package com.jeremysim.adoptapet.controllers;
 
 import com.jeremysim.adoptapet.models.AdoptionApplication;
-import com.jeremysim.adoptapet.models.AdoptionApplicationApprovalForm;
-import com.jeremysim.adoptapet.models.AdoptionApplicationForm;
 import com.jeremysim.adoptapet.models.PetSurrenderApplication;
 import com.jeremysim.adoptapet.models.PetSurrenderApplicationApprovalForm;
 import com.jeremysim.adoptapet.models.PetSurrenderApplicationForm;
