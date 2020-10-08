@@ -50,5 +50,4 @@ public class PetSurrenderApplicationFormService {
     currentApp.setVaccinationStatus(newApp.getVaccinationStatus());
     petSurrenderApplicationRepo.save(currentApp);
   }
-
 }

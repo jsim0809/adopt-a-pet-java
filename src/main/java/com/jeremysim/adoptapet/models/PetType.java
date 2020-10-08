@@ -35,5 +35,4 @@ public class PetType {
   @OneToMany(mappedBy = "surrenderedPetType")
   @JsonIgnoreProperties("surrenderedPetType")
   private Set<PetSurrenderApplication> petSurrenderApplications;
-
 }

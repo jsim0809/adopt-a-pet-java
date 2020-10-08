@@ -36,5 +36,4 @@ public class PetSurrenderApplicationApprovalFormService {
             application.getSurrenderedPetType()));
     petSurrenderApplicationRepo.save(application);
   }
-
 }
