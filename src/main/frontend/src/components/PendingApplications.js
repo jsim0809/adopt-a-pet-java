@@ -17,8 +17,8 @@ const PendingApplications = props => {
                 <td>{app.name}</td>
                 <td>{app.phoneNumber}</td>
                 <td>{app.email}</td>
-                <td>X</td>
-                <td>Edit</td>
+                <td><strong>🗙</strong></td>
+                <td><strong>Edit</strong></td>
               </tr>
             )
           }
@@ -38,8 +38,8 @@ const PendingApplications = props => {
                   <td>{app.name}</td>
                   <td>{app.phoneNumber}</td>
                   <td>{app.email}</td>
-                  <td>X</td>
-                  <td>Edit</td>
+                  <td><strong>🗙</strong></td>
+                  <td><strong>Edit</strong></td>
                 </tr>
               )
             }
