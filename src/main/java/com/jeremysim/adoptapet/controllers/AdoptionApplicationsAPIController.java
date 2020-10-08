@@ -87,5 +87,4 @@ public class AdoptionApplicationsAPIController {
     adoptionApplicationRepo.deleteById(id);
     return new ResponseEntity(HttpStatus.OK);
   }
-
 }

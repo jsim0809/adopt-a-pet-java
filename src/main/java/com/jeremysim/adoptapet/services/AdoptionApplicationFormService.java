@@ -41,5 +41,4 @@ public class AdoptionApplicationFormService {
     currentApp.setHomeStatus(newApp.getHomeStatus());
     adoptionApplicationRepo.save(currentApp);
   }
-
 }

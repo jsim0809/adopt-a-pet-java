@@ -85,11 +85,9 @@ public class PetSurrenderApplicationsAPIController {
     }
   }
 
-
   @DeleteMapping("/{id}")
   public ResponseEntity deleteApplication(@PathVariable Integer id) {
     petSurrenderApplicationRepo.deleteById(id);
     return new ResponseEntity(HttpStatus.OK);
   }
-
 }

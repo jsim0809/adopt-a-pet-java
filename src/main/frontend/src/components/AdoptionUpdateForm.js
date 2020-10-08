@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const AdoptionUpdateForm = ({prefilled, petId}) => {
+const AdoptionUpdateForm = ({ prefilled, refresh }) => {
   const [newApplication, setNewApplication] = useState({
     name: "",
     phoneNumber: "",
@@ -10,13 +10,12 @@ const AdoptionUpdateForm = ({prefilled, petId}) => {
 
   useEffect(() => {
     setNewApplication({
-                          name: prefilled?.name || "",
-                          phoneNumber: prefilled?.phoneNumber || "",
-                          email: prefilled?.email || "",
-                          homeStatus: prefilled?.homeStatus || "default",
-                        })
+      name: prefilled.name,
+      phoneNumber: prefilled.phoneNumber,
+      email: prefilled.email,
+      homeStatus: prefilled.homeStatus,
+    })
   }, [prefilled])
-
 
   const handleAppChange = event => {
     setNewApplication({
@@ -52,8 +51,8 @@ const AdoptionUpdateForm = ({prefilled, petId}) => {
         body: JSON.stringify(payload)
       })
         .then((result) => {
-          if(result.ok){
-          window.location.reload(true);
+          if (result.ok) {
+            refresh();
           }
         })
         .catch(error => {
@@ -62,40 +61,30 @@ const AdoptionUpdateForm = ({prefilled, petId}) => {
     }
   }
 
-  let adoptForm = (
-      <div className="adoption-form-section">
-        <form className="put-pet-up-for-adoption" onSubmit={handleAppSubmit}>
-          <h2>Pet Adoption Form</h2>
-          <label>Your Name:
-            <input type="text" name="name" onChange={handleAppChange} value={newApplication.name} />
-          </label>
-
-          <label>Phone Number:
-            <input type="text" name="phoneNumber" onChange={handleAppChange} value={newApplication.phoneNumber} />
-          </label>
-
-          <label>Email Address:
-            <input type="text" name="email" onChange={handleAppChange} value={newApplication.email} />
-          </label>
-
-          <label>Select Home Status:</label>
-            <select name="homeStatus" onChange={handleAppChange} value={newApplication.homeStatus}>
-              <option value="default" disabled hidden>--Select Home Status--</option>
-              <option value="own">Own</option>
-              <option value="rent">Rent</option>
-            </select>
-
-          <div>
-            <input className="button submit-btn" type="submit" value="Submit" />
-          </div>
-        </form>
-      </div>
-    )
-
   return (
-    <>
-      {adoptForm}
-    </>
+    <div className="adoption-form-section">
+      <form className="put-pet-up-for-adoption" onSubmit={handleAppSubmit}>
+        <h2>Pet Adoption Form</h2>
+        <label>Your Name:
+            <input type="text" name="name" onChange={handleAppChange} value={newApplication.name} />
+        </label>
+        <label>Phone Number:
+            <input type="text" name="phoneNumber" onChange={handleAppChange} value={newApplication.phoneNumber} />
+        </label>
+        <label>Email Address:
+            <input type="text" name="email" onChange={handleAppChange} value={newApplication.email} />
+        </label>
+        <label>Select Home Status:</label>
+        <select name="homeStatus" onChange={handleAppChange} value={newApplication.homeStatus}>
+          <option value="default" disabled hidden>--Select Home Status--</option>
+          <option value="own">Own</option>
+          <option value="rent">Rent</option>
+        </select>
+        <div>
+          <input className="button submit-btn" type="submit" value="Submit" />
+        </div>
+      </form>
+    </div>
   )
 }
 

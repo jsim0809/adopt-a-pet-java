@@ -23,18 +23,21 @@ public class PetSurrenderApplicationApprovalFormService {
   }
 
   public void process(PetSurrenderApplicationApprovalForm form) {
-    PetSurrenderApplication application = petSurrenderApplicationRepo.findById(form.getApplicationId()).get();
-    application.setApplicationStatus(form.getApprovalStatus());
-    adoptablePetRepo.save(
-        new AdoptablePet(
-            application.getPetName(),
-            application.getPetImageUrl(),
-            application.getPetAge(),
-            application.getVaccinationStatus(),
-            "Adopt " + application.getPetName() + "!",
-            "null",
-            application.getSurrenderedPetType()));
+    PetSurrenderApplication application = petSurrenderApplicationRepo
+        .findById(form.getApplicationId()).get();
+    String approvalStatus = form.getApprovalStatus();
+    application.setApplicationStatus(approvalStatus);
+    if (approvalStatus.equals("approved")) {
+      adoptablePetRepo.save(
+          new AdoptablePet(
+              application.getPetName(),
+              application.getPetImageUrl(),
+              application.getPetAge(),
+              application.getVaccinationStatus(),
+              "Adopt " + application.getPetName() + "!",
+              "null",
+              application.getSurrenderedPetType()));
+    }
     petSurrenderApplicationRepo.save(application);
   }
-
 }
