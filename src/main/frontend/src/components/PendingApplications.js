@@ -5,47 +5,65 @@ const PendingApplications = props => {
   const [adoptionApps, setAdoptionApps] = useState([]);
   const [surrenderApps, setSurrenderApps] = useState([]);
 
-  useEffect(() => {
-    fetch(`/api/v1/adoption_applications`)
-      .then((response) => response.json())
-      .then((adoptionApps) => {
-        setAdoptionApps(adoptionApps.map((app) => {
-          if (app.applicationStatus == "pending"){
-            return (
-              <tr key={app.id}>
-                <td>{app.pet.name}</td>
-                <td>{app.name}</td>
-                <td>{app.phoneNumber}</td>
-                <td>{app.email}</td>
-                <td><strong>🗙</strong></td>
-                <td><strong>Edit</strong></td>
-              </tr>
-            )
-          }
-        }));
-      });
-  }, []);
+  const deleteAdoptionApp = (index) => {
+    if (confirm("Delete this application?")) {
+      fetch(`/api/v1/adoption_applications/${index}`, {method: 'delete'})
+        .then(fetchAdoptionApps);
+    }
+  }
 
-    useEffect(() => {
-      fetch(`/api/v1/pet_surrender_applications`)
+    const deleteSurrenderApp = (index) => {
+    if (confirm("Delete this application?")) {
+      fetch(`/api/v1/pet_surrender_applications/${index}`, {method: 'delete'})
+      .then(fetchSurrenderApps);
+      }
+    }
+
+  const fetchAdoptionApps = () => {
+      fetch(`/api/v1/adoption_applications`)
         .then((response) => response.json())
-        .then((surrenderApps) => {
-          setSurrenderApps(surrenderApps.map((app) => {
+        .then((adoptionApps) => {
+          setAdoptionApps(adoptionApps.map((app) => {
             if (app.applicationStatus == "pending"){
               return (
                 <tr key={app.id}>
-                  <td>{app.petName}</td>
+                  <td>{app.pet.name}</td>
                   <td>{app.name}</td>
                   <td>{app.phoneNumber}</td>
                   <td>{app.email}</td>
-                  <td><strong>🗙</strong></td>
+                  <td onClick={() => deleteAdoptionApp(app.id)}><strong>🗙</strong></td>
                   <td><strong>Edit</strong></td>
                 </tr>
               )
             }
           }));
         });
-    }, []);
+  }
+
+  useEffect(fetchAdoptionApps, []);
+
+ const fetchSurrenderApps = () => {
+                                 fetch(`/api/v1/pet_surrender_applications`)
+                                   .then((response) => response.json())
+                                   .then((surrenderApps) => {
+                                     setSurrenderApps(surrenderApps.map((app) => {
+                                       if (app.applicationStatus == "pending"){
+                                         return (
+                                           <tr key={app.id}>
+                                             <td>{app.petName}</td>
+                                             <td>{app.name}</td>
+                                             <td>{app.phoneNumber}</td>
+                                             <td>{app.email}</td>
+                                             <td onClick={() => deleteSurrenderApp(app.id)}><strong>🗙</strong></td>
+                                             <td><strong>Edit</strong></td>
+                                           </tr>
+                                         )
+                                       }
+                                     }));
+                                   });
+                               };
+
+    useEffect(fetchSurrenderApps, []);
 
   return (
     <>

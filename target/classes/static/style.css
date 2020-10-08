@@ -171,3 +171,7 @@ div.individual-pet-information {
 .form-display li:hover {
   color: var(--medium-blue);
 }
+
+td strong {
+  cursor: pointer;
+}
