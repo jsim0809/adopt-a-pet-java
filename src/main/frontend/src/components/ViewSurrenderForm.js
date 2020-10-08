@@ -26,18 +26,19 @@ const SurrenderForm = props => {
                 approvalStatus: newSurrender
             })
         })
-          .then(() => {
-            window.location.reload(true);
-          })
+            .then(() => {
+                fetchAllApps();
+            })
     };
 
-    useEffect(() => {
+    const fetchAllApps = () => {
         fetch("/api/v1/pet_surrender_applications").then((response) => response.json())
             .then(surrenderForms => {
                 setAllSurrenderForms(surrenderForms)
             })
-    }
-        , [])
+    };
+
+    useEffect(fetchAllApps, []);
 
     let viewAllForms = allSurrenderForms.map(SurrenderForm => {
         return (

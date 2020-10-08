@@ -22,22 +22,24 @@ const ApprovalForm = props => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                petId:currentlySelectedForm.pet.id,
-                applicationId:currentlySelectedForm.id,
-                approvalStatus:newApproval
+                petId: currentlySelectedForm.pet.id,
+                applicationId: currentlySelectedForm.id,
+                approvalStatus: newApproval
             })
         })
-          .then(() => {
-            window.location.reload(true);
-          })
+            .then(() => {
+                fetchAllApps();
+            })
     };
 
-    useEffect(() => {
+    const fetchAllApps = () => {
         fetch("/api/v1/adoption_applications").then((response) => response.json())
             .then(adoptionForms => {
                 setAllAdoptionForms(adoptionForms)
-            })}
-        , [])
+            })
+    }
+
+    useEffect(fetchAllApps, []);
 
     let allForms = allAdoptionForms.map(AdoptionForm => {
         return <option key={AdoptionForm.id} value={JSON.stringify(AdoptionForm)}>--{`${AdoptionForm.name}, Application#${AdoptionForm.id}, ${AdoptionForm.applicationStatus}`}--</option>

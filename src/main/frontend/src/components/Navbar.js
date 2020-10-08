@@ -15,56 +15,48 @@ const Navbar = props => {
       <div className="top-bar">
         <div className="top-bar-left">
           <ul className="dropdown menu" data-dropdown-menu>
-          <li>
-            <Link to="/pets"> 
-            <div className="home">Pet Adoption</div>
-            </Link>
-          </li>
-           
-           <li>
+            <li>
+              <Link to="/pets">
+                <div className="home">Pet Adoption</div>
+              </Link>
+            </li>
+            <li>
               <Link to="/pets/two-legged">
                 <div className="navbar">
                   Two Legged Pets
                 </div>
               </Link>
-          </li>
-
-              <li>
-                <Link to="/pets/four-legged">
-                 <div className="navbar"> Four Legged Pets</div>
-                </Link>
-              </li>
-           
-              <li>
-                <Link to="/adoptions/new">
-                  <div className="navbar">Put a Pet Up For Adoption </div>
-                </Link>
             </li>
-
-              <li>
-                <Link to="/pets/adopted">
-                  <div className="navbar">Success Stories </div>
-                </Link>
+            <li>
+              <Link to="/pets/four-legged">
+                <div className="navbar"> Four Legged Pets</div>
+              </Link>
             </li>
-
-              <li>
-                <Link to="/pending_applications">
-                  <div className="navbar">Update Your Application </div>
-                </Link>
+            <li>
+              <Link to="/adoptions/new">
+                <div className="navbar">Put a Pet Up For Adoption </div>
+              </Link>
             </li>
-
-              <li>
-                <Link to="/admin/review/adoption">
-                  <div className="navbar">Review Adoption Requests </div>
-                </Link>
+            <li>
+              <Link to="/pets/adopted">
+                <div className="navbar">Success Stories </div>
+              </Link>
             </li>
-
-              <li>
-                <Link to="/admin/review/surrender">
-                  <div className="navbar">Review Pet Surrender Requests </div>
-                </Link>
+            <li>
+              <Link to="/pending_applications">
+                <div className="navbar">Update Your Application </div>
+              </Link>
             </li>
-
+            <li>
+              <Link to="/admin/review/adoption">
+                <div className="navbar">Review Adoption Requests </div>
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/review/surrender">
+                <div className="navbar">Review Pet Surrender Requests </div>
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
@@ -82,4 +74,5 @@ const Navbar = props => {
     </>
   );
 };
+
 export default Navbar;
